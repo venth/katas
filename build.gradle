@@ -16,7 +16,7 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'gradle'
+apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
@@ -50,8 +50,5 @@ dependencies {
             "net.bytebuddy:byte-buddy:1.6.5",
             // allows mocking of classes without default constructor (together with CGLIB)
             "org.objenesis:objenesis:2.5.1",
-
-            'org.slf4j:slf4j-ap',
-            'org.slf4j:slf4j-simple',
     )
 }

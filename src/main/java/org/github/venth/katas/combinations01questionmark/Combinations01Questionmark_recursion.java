@@ -1,16 +1,14 @@
 package org.github.venth.katas.combinations01questionmark;
 
-import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.util.StringUtils;
 
-class Combinations01Questionmark implements Function<String, Stream<String>> {
+class Combinations01Questionmark_recursion implements Function<String, Stream<String>> {
 
     static Stream<String> combinationsOf(String input) {
-        return new Combinations01Questionmark().apply(input);
+        return new Combinations01Questionmark_recursion().apply(input);
     }
 
     @Override
@@ -34,12 +32,13 @@ class Combinations01Questionmark implements Function<String, Stream<String>> {
             return Stream.of(input.substring(currentPos));
         }
 
-        List<String> remaining = calculate(input, questionMarkPosition + 1, inputLength).collect(Collectors.toList());
         String staticPart = input.substring(currentPos, questionMarkPosition);
-
-        return Stream.of("0", "1")
-                        .map(questionMarkReplacement -> staticPart + questionMarkReplacement)
-                        .flatMap(part -> remaining.stream().map(remainingPart -> part + remainingPart));
+        return calculate(input, questionMarkPosition + 1, inputLength)
+                .flatMap(remainingPart -> Stream.of(staticPart + "0", staticPart + "1").map(part -> part + remainingPart));
     }
 
+    @Override
+    public String toString() {
+        return "recursive combinator";
+    }
 }
