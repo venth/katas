@@ -7,10 +7,6 @@ import org.springframework.util.StringUtils;
 
 class Combinations01Questionmark_iteration implements Function<String, Stream<String>> {
 
-    static Stream<String> combinationsOf(String input) {
-        return new Combinations01Questionmark_iteration().apply(input);
-    }
-
     @Override
     public Stream<String> apply(String input) {
         if (!StringUtils.isEmpty(input)) {
