@@ -57,7 +57,7 @@ class Combinations01QuestionmarkWhileSpec extends Specification {
     @Unroll
     def '#combinator calculates big number of question marks'() {
         given:
-            def bigNumberOfQuestionMarks = 25
+            def bigNumberOfQuestionMarks = 4000
             def aLotOfSolitudeQuestionMarks = Stream.generate({
                 "?"
             }).limit(bigNumberOfQuestionMarks).collect(joining())
