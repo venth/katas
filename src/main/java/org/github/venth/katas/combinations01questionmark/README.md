@@ -44,38 +44,47 @@ It seems that I have to change the approach radically.
 
 The idea is based on observations as follows:
 - each combination is represented as path to the tree leaf
+```
                             *
                            / \
                           0   1
                          / \ / \
                         0  1 0  1
+```
 - there is no need to build the tree, I have to just to iterate through paths from
   a leaf to the root, so results for each iteration step could look like:
   - 00
+```
                             *
                            /
                           0
                          /
                         0
-
+```
   - 10
+```
                             *
                            /
                           0
                            \
                             1
+```
   - 01
+```
                             *
                              \
                               1
                              /
-                            0   
+                            0
+```
   - 11
+```
                             *
                              \
                               1
                                \
                                 1
+```
   Note that traversing happens from a leaf to the root
 - I can simplify text: `00101?0001111??` to `???` and for each calculated combination of `???`
   replace iteratively question marks with a single combination result
